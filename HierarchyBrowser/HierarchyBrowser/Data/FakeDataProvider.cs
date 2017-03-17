@@ -2,8 +2,9 @@
 using System.Globalization;
 using System.Linq;
 using Faker;
+using HierarchyBrowser.Models;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Data
 {
     internal class FakeDataProvider : IDataProvider
     {

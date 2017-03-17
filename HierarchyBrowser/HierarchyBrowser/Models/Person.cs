@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Models
 {
     internal class Person : IHierarchyItem
     {

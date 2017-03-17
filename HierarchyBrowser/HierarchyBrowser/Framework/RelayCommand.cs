@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Framework
 {
     public class RelayCommand : ICommand
     {

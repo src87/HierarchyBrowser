@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using HierarchyBrowser.Models;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Data
 {
     internal interface IDataProvider
     {

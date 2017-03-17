@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Framework
 {
     internal class ViewModelBase : INotifyPropertyChanged
     {

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for SelectedItemView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class SelectedItemView : UserControl
     {
-        public MainView()
+        public SelectedItemView()
         {
             InitializeComponent();
         }

@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using System.Windows.Threading;
+using HierarchyBrowser.Data;
+using HierarchyBrowser.Framework;
+using HierarchyBrowser.Helpers;
+using HierarchyBrowser.Models;
 
-namespace HierarchyBrowser
+namespace HierarchyBrowser.ViewModels
 {
     internal class MainViewModel : ViewModelBase
     {
@@ -51,13 +55,32 @@ namespace HierarchyBrowser
             set
             {
                 _selectedItem = value;
+                HierarchyViewModel = new HierarchyViewModel
+                {
+                    Item = _selectedItem
+                };
+                OnPropertyChanged();
+            }
+        }
+
+        private HierarchyViewModel _hierarchyViewModel;
+        public HierarchyViewModel HierarchyViewModel
+        {
+            get => _hierarchyViewModel;
+            set
+            {
+                _hierarchyViewModel = value;
                 OnPropertyChanged();
             }
         }
 
         private void Search(object o)
         {
-            Results = _dataProvider.Get(_searchText).ToList();
+            Results = 
+                _dataProvider
+                    .Get(_searchText)
+                    .OrderBy(item => item, new HierarchyItemComparer())
+                    .ToList();
         }
 
         private void StartTimer()
