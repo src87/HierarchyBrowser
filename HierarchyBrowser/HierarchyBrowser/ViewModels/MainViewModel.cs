@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Threading;
 using HierarchyBrowser.Data;
@@ -74,13 +76,22 @@ namespace HierarchyBrowser.ViewModels
             }
         }
 
-        private void Search(object o)
+        private async void Search(object o)
         {
-            Results = 
-                _dataProvider
-                    .Get(_searchText)
-                    .OrderBy(item => item, new HierarchyItemComparer())
-                    .ToList();
+            //Results =
+            //    _dataProvider
+            //        .Get(_searchText)
+            //        .OrderBy(item => item, new HierarchyItemComparer())
+            //        .ToList();
+
+            Results = await
+                Task.Factory.StartNew(
+                    () =>
+                        _dataProvider
+                            .Get(_searchText)
+                            .OrderBy(item => item, new HierarchyItemComparer())
+                            .ToList()
+            );
         }
 
         private void StartTimer()
@@ -97,8 +108,11 @@ namespace HierarchyBrowser.ViewModels
 
         private void TimerElapsed(object sender, EventArgs e)
         {
-            if (_lastSearchText != _searchText)
-                Search(null);
+            if (_lastSearchText == _searchText)
+                return;
+
+            _lastSearchText = _searchText;
+            Search(null);
         }
     }
 }

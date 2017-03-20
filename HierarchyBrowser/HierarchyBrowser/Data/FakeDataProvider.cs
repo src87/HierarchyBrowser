@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using Faker;
 using HierarchyBrowser.Models;
 
@@ -20,6 +21,8 @@ namespace HierarchyBrowser.Data
         {
             if (string.IsNullOrWhiteSpace(text))
                 return _people;
+
+            Thread.Sleep(1000);
 
             var terms = text.Split(' ');
             var results = _people.Where(p => Found(terms, p.Name));

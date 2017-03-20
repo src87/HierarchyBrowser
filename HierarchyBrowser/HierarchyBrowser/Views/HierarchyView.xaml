@@ -19,7 +19,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <ContentControl Content="{Binding SelectedItemViewModel}"/>
+        <ContentControl Content="{Binding SelectedItemViewModel}" HorizontalAlignment="Left"/>
         <ItemsControl ItemsSource="{Binding Item.Children}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
