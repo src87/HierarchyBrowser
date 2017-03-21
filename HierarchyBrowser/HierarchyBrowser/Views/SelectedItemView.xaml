@@ -2,12 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
              mc:Ignorable="d">
-    <StackPanel Background="LightGray" Width="400">
-        <Label Content="{Binding Item.DisplayText}" 
-               Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
-               VerticalContentAlignment="Center" 
-               Height="60"/>
-    </StackPanel>
+    <Border BorderBrush="Black" BorderThickness="1" Height="{x:Static helpers:HierarchyValues.SelectedItemHeight}" Background="LightGray" Width="400">
+        <TextBlock Text="{Binding Item.DisplayText}" 
+                   Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
+                   VerticalAlignment="Center" />
+    </Border>
 </UserControl>

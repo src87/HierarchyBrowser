@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Threading;
 using HierarchyBrowser.Data;
 using HierarchyBrowser.Framework;
 using HierarchyBrowser.Helpers;
+using HierarchyBrowser.Messaging;
 using HierarchyBrowser.Models;
 
 namespace HierarchyBrowser.ViewModels
@@ -18,10 +18,16 @@ namespace HierarchyBrowser.ViewModels
         private DispatcherTimer _timer;
         private const int TimerInterval = 500;
         private string _lastSearchText;
+        private readonly ApplicationContext _context;
 
         public MainViewModel()
         {
             _dataProvider = new FakeDataProvider();
+            _context = new ApplicationContext
+            {
+                Messenger = Messenger.Instance
+            };
+            _context.Messenger.Register<NavigationMessage>(this, Navigate);
             SearchCommand = new RelayCommand(o => true, Search);
             StartTimer();
         }
@@ -39,8 +45,8 @@ namespace HierarchyBrowser.ViewModels
             }
         }
 
-        private List<IHierarchyItem> _results;
-        public List<IHierarchyItem> Results
+        private List<HierarchyItemViewModel> _results;
+        public List<HierarchyItemViewModel> Results
         {
             get => _results;
             set
@@ -57,9 +63,9 @@ namespace HierarchyBrowser.ViewModels
             set
             {
                 _selectedItem = value;
-                HierarchyViewModel = new HierarchyViewModel
+                HierarchyViewModel = new HierarchyViewModel(_context, new LinePositionCalculator())
                 {
-                    Item = _selectedItem
+                    Item = HierarchyItemToViewModel(_selectedItem)
                 };
                 OnPropertyChanged();
             }
@@ -76,6 +82,14 @@ namespace HierarchyBrowser.ViewModels
             }
         }
 
+        private void Navigate(NavigationMessage message)
+        {
+            HierarchyViewModel = new HierarchyViewModel(_context, new LinePositionCalculator())
+            {
+                Item = HierarchyItemToViewModel(message.SelectedItem)
+            };
+        }
+        
         private async void Search(object o)
         {
             //Results =
@@ -90,8 +104,14 @@ namespace HierarchyBrowser.ViewModels
                         _dataProvider
                             .Get(_searchText)
                             .OrderBy(item => item, new HierarchyItemComparer())
+                            .Select(HierarchyItemToViewModel)
                             .ToList()
             );
+        }
+
+        private HierarchyItemViewModel HierarchyItemToViewModel(IHierarchyItem item)
+        {
+            return new HierarchyItemViewModel(_context, item);
         }
 
         private void StartTimer()

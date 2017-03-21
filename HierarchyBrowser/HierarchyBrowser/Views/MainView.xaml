@@ -19,8 +19,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <TextBox Width="150" Height="20" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
+            <TextBox Name="SearchTextBox"  Width="150" Height="20" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Width="40" Height="20" Command="{Binding SearchCommand}"/>
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedItem}">

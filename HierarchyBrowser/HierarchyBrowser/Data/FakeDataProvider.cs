@@ -68,9 +68,17 @@ namespace HierarchyBrowser.Data
                             Name = Name.FullName()
                         };
 
+                        var p4 = new Person
+                        {
+                            Name = Name.FullName()
+                        };
+
                         p3.Parents.Add(p2);
                         p2.Children.Add(p3);
+                        p4.Children.Add(p3);
+                        p3.Parents.Add(p4);
                         _people.Add(p3);
+                        _people.Add(p4);
                     }
                 }
                 _people.Add(p);

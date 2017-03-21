@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -51,9 +52,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\IndentLevelToMarginConverter.cs" />
+    <Compile Include="Converters\IntToVerticalMarginConverter.cs" />
     <Compile Include="Converters\StringEmptyToVisibilityConverter.cs" />
     <Compile Include="Data\FakeDataProvider.cs" />
+    <Compile Include="Framework\ApplicationContext.cs" />
+    <Compile Include="Framework\IMessenger.cs" />
+    <Compile Include="Framework\Messenger.cs" />
     <Compile Include="Helpers\HierarchyItemComparer.cs" />
+    <Compile Include="Helpers\HierarchyValues.cs" />
+    <Compile Include="Helpers\ILinePositionCalculator.cs" />
+    <Compile Include="Helpers\LinePositionCalculator.cs" />
+    <Compile Include="Messaging\NavigationMessage.cs" />
+    <Compile Include="ViewModels\HierarchyItemViewModel.cs" />
+    <Compile Include="Helpers\HierarchyLine.cs" />
     <Compile Include="ViewModels\SelectedItemViewModel.cs" />
     <Compile Include="Views\HierarchyView.xaml.cs">
       <DependentUpon>HierarchyView.xaml</DependentUpon>
