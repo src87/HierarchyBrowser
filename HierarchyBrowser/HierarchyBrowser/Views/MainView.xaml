@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
@@ -24,16 +24,14 @@
             <Button Width="40" Height="20" Command="{Binding SearchCommand}"/>
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedItem}">
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="150" DisplayMemberBinding="{Binding DisplayText}" />
-                </GridView>
-            </ListView.View>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Width="265">
+                        <TextBlock Text="{Binding DisplayText}" DockPanel.Dock="Left"/>
+                        <TextBlock Text="(lol)" FontStyle="Italic" Foreground="Blue" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding HierarchyViewModel}"/>
     </Grid>

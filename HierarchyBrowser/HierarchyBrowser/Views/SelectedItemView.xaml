@@ -6,8 +6,16 @@
              xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
              mc:Ignorable="d">
     <Border BorderBrush="Black" BorderThickness="1" Height="{x:Static helpers:HierarchyValues.SelectedItemHeight}" Background="LightGray" Width="400">
-        <TextBlock Text="{Binding Item.DisplayText}" 
-                   Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
-                   VerticalAlignment="Center" />
+        <DockPanel>
+            <TextBlock Text="{Binding Item.DisplayText}" 
+                       DockPanel.Dock="Left"
+                       Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
+                       VerticalAlignment="Center" />
+            <Border DockPanel.Dock="Right"
+                    Width="40"
+                    BorderBrush="Black"
+                    BorderThickness="1, 0, 0, 0">
+            </Border>
+        </DockPanel>
     </Border>
 </UserControl>
