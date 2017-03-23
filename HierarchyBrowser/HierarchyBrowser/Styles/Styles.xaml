@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:HierarchyBrowser"
                     xmlns:viewModels="clr-namespace:HierarchyBrowser.ViewModels"
-                    xmlns:views="clr-namespace:HierarchyBrowser.Views">
+                    xmlns:views="clr-namespace:HierarchyBrowser.Views"
+                    xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers">
     <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Tahoma" />
         <Setter Property="FontSize" Value="12" />
@@ -16,4 +17,43 @@
     <Style TargetType="DockPanel">
         <Setter Property="LastChildFill" Value="False" />
     </Style>
+    
+    <Style x:Key="SelectedItemBorder" TargetType="Border">
+        <!--<Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+        </Style.Triggers>-->
+        <Setter Property="Height" Value="{x:Static helpers:HierarchyValues.SelectedItemHeight}" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Width" Value="400"/>
+    </Style>
+
+    <Style x:Key="SelectedItemDockPanel" TargetType="DockPanel" BasedOn="{StaticResource {x:Type DockPanel}}">
+        <!--<Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+
+    <Style x:Key="SelectedItemTextBlock" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <!--<Style.Triggers>
+            <Trigger Property="IsFocused" Value="False">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+        </Style.Triggers>-->
+    </Style>
+
 </ResourceDictionary>

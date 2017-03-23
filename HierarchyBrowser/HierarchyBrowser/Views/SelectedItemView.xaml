@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
              mc:Ignorable="d">
-    <Border BorderBrush="Black" BorderThickness="1" Height="{x:Static helpers:HierarchyValues.SelectedItemHeight}" Background="LightGray" Width="400">
-        <DockPanel>
-            <TextBlock Text="{Binding Item.DisplayText}" 
+    <Border Style="{StaticResource SelectedItemBorder}">
+        <DockPanel Style="{StaticResource SelectedItemDockPanel}">
+            <TextBlock Text="{Binding Item.DisplayText}" Style="{StaticResource SelectedItemTextBlock}"
                        DockPanel.Dock="Left"
                        Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
                        VerticalAlignment="Center" />
