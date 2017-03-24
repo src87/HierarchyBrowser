@@ -7,7 +7,8 @@
              mc:Ignorable="d">
     <Border Style="{StaticResource SelectedItemBorder}">
         <DockPanel Style="{StaticResource SelectedItemDockPanel}">
-            <TextBlock Text="{Binding Item.DisplayText}" Style="{StaticResource SelectedItemTextBlock}"
+            <TextBlock Text="{Binding Item.DisplayText}" 
+                       Style="{StaticResource SelectedItemTextBlock}"
                        DockPanel.Dock="Left"
                        Visibility="{Binding Item.DisplayText, Converter={StaticResource StringEmptyToVisibilityConverter}}"
                        VerticalAlignment="Center" />

@@ -6,79 +6,85 @@
              xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
              mc:Ignorable="d" 
              SnapsToDevicePixels="True">
-    <Canvas>
-        <ItemsControl ItemsSource="{Binding Path=Lines}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Canvas />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Line X1="{Binding X1}" 
-                          Y1="{Binding Y1}" 
-                          X2="{Binding X2}" 
-                          Y2="{Binding Y2}" 
-                          Stroke="Black" 
-                          StrokeThickness=".5" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+    <StackPanel>
+        <Border Style="{StaticResource HeaderBorder}">
+            <TextBlock Text="Code hierarchy" 
+                       Style="{StaticResource HeaderTextBlock}"/>
+        </Border>
+        <Canvas>
+            <ItemsControl ItemsSource="{Binding Path=Lines}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Line X1="{Binding X1}" 
+                              Y1="{Binding Y1}" 
+                              X2="{Binding X2}" 
+                              Y2="{Binding Y2}" 
+                              Stroke="Black" 
+                              StrokeThickness=".5" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         
-        <StackPanel Orientation="Vertical">
-            <ItemsControl ItemsSource="{Binding Item.ParentViewModels}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Height="{x:Static helpers:HierarchyValues.ItemHeight}">
-                            <TextBlock Text="{Binding DisplayText}"
-                                       VerticalAlignment="Center"
-                                       Margin="{Binding Source={x:Static helpers:HierarchyValues.ParentIndentLevel},
-                                                        Converter={StaticResource IndentLevelToMarginConverter}}">
-                                <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding SelectedCommand}"
-                                                  MouseAction="LeftClick" />
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <StackPanel Orientation="Vertical">
+                <ItemsControl ItemsSource="{Binding Item.ParentViewModels}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="{x:Static helpers:HierarchyValues.ItemHeight}">
+                                <TextBlock Text="{Binding DisplayText}"
+                                           VerticalAlignment="Center"
+                                           Margin="{Binding Source={x:Static helpers:HierarchyValues.ParentIndentLevel},
+                                                            Converter={StaticResource IndentLevelToMarginConverter}}">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding SelectedCommand}"
+                                                      MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-            <Border Margin="{Binding Source={x:Static helpers:HierarchyValues.SelectedItemVerticalMargin},
-                                     Converter={StaticResource IntToVerticalMarginConverter}}">
-                <ContentControl Content="{Binding SelectedItemViewModel}" 
-                                HorizontalAlignment="Left"
-                                Margin="{Binding Source={x:Static helpers:HierarchyValues.SelectedIndentLevel},
-                                                 Converter={StaticResource IndentLevelToMarginConverter}}"/>
-            </Border>
+                <Border Margin="{Binding Source={x:Static helpers:HierarchyValues.SelectedItemVerticalMargin},
+                                         Converter={StaticResource IntToVerticalMarginConverter}}">
+                    <ContentControl Content="{Binding SelectedItemViewModel}" 
+                                    HorizontalAlignment="Left"
+                                    Margin="{Binding Source={x:Static helpers:HierarchyValues.SelectedIndentLevel},
+                                                     Converter={StaticResource IndentLevelToMarginConverter}}"/>
+                </Border>
             
-            <ItemsControl ItemsSource="{Binding Item.ChildViewModels}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Vertical"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Height="{x:Static helpers:HierarchyValues.ItemHeight}">
-                            <TextBlock Text="{Binding DisplayText}"
-                                       VerticalAlignment="Center"
-                                       Margin="{Binding Source={x:Static helpers:HierarchyValues.ChildIndentLevel},
-                                                        Converter={StaticResource IndentLevelToMarginConverter}}">
-                                <TextBlock.InputBindings>
-                                    <MouseBinding Command="{Binding SelectedCommand}" 
-                                                  MouseAction="LeftClick" />
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-    </Canvas>
+                <ItemsControl ItemsSource="{Binding Item.ChildViewModels}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="{x:Static helpers:HierarchyValues.ItemHeight}">
+                                <TextBlock Text="{Binding DisplayText}"
+                                           VerticalAlignment="Center"
+                                           Margin="{Binding Source={x:Static helpers:HierarchyValues.ChildIndentLevel},
+                                                            Converter={StaticResource IndentLevelToMarginConverter}}">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding Command="{Binding SelectedCommand}" 
+                                                      MouseAction="LeftClick" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Canvas>
+    </StackPanel>
 </UserControl>
