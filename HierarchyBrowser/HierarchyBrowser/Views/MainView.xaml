@@ -16,6 +16,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="450"/>
@@ -55,5 +57,16 @@
             </ListView>
         </StackPanel>
         <ContentControl Grid.Row="1" Grid.Column="1" Height="500" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding HierarchyViewModel}"/>
+        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource HeaderBorder}" Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Selected code" Style="{StaticResource HeaderTextBlock}"/>
+                <TextBlock Text="{Binding SelectedItemDisplayText}" VerticalAlignment="Center" FontStyle="Italic" Margin="20,0,0,0"/>
+            </StackPanel>
+        </Border>
+        <DockPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Background="{StaticResource FormBackground}" LastChildFill="False">
+            <Button Content="Cancel" DockPanel.Dock="Right" Width="110" Height="25"/>
+            <Button Content="OK" DockPanel.Dock="Right" Width="110" Height="25"/>
+            <Button Content="Add another" DockPanel.Dock="Right" Width="110" Height="25"/>
+        </DockPanel>
     </Grid>
 </UserControl>

@@ -28,6 +28,7 @@ namespace HierarchyBrowser.ViewModels
                 Messenger = Messenger.Instance
             };
             _context.Messenger.Register<NavigationMessage>(this, Navigate);
+            SelectedItem = null;
             SearchCommand = new RelayCommand(o => true, Search);
             StartTimer();
         }
@@ -67,6 +68,18 @@ namespace HierarchyBrowser.ViewModels
                 {
                     Item = HierarchyItemToViewModel(_selectedItem)
                 };
+                SelectedItemDisplayText = SelectedItem?.DisplayText ?? "No code selected";
+                OnPropertyChanged();
+            }
+        }
+
+        private string _selectedItemDisplayText;
+        public string SelectedItemDisplayText
+        {
+            get => _selectedItemDisplayText;
+            set
+            {
+                _selectedItemDisplayText = value;
                 OnPropertyChanged();
             }
         }
@@ -84,10 +97,7 @@ namespace HierarchyBrowser.ViewModels
 
         private void Navigate(NavigationMessage message)
         {
-            HierarchyViewModel = new HierarchyViewModel(_context, new LinePositionCalculator())
-            {
-                Item = HierarchyItemToViewModel(message.SelectedItem)
-            };
+            SelectedItem = message.SelectedItem;
         }
         
         private async void Search(object o)
@@ -111,6 +121,9 @@ namespace HierarchyBrowser.ViewModels
 
         private HierarchyItemViewModel HierarchyItemToViewModel(IHierarchyItem item)
         {
+            if (item == null)
+                return null;
+
             return new HierarchyItemViewModel(_context, item);
         }
 

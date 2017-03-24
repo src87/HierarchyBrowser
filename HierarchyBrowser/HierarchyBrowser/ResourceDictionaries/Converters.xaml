@@ -4,4 +4,5 @@
     <converters:StringEmptyToVisibilityConverter x:Key="StringEmptyToVisibilityConverter"/>
     <converters:IndentLevelToMarginConverter x:Key="IndentLevelToMarginConverter"/>
     <converters:IntToVerticalMarginConverter x:Key="IntToVerticalMarginConverter"/>
+    <converters:NullToCollapsedVisibilityConverter x:Key="NullToCollapsedVisibilityConverter"/>
 </ResourceDictionary>

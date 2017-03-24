@@ -70,6 +70,7 @@
         <Setter Property="Foreground" Value="{StaticResource HeaderMediumColour}" />
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10,0,0,0"></Setter>
     </Style>
 
 </ResourceDictionary>

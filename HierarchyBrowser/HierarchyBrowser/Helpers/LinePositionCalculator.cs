@@ -14,6 +14,9 @@ namespace HierarchyBrowser.Helpers
         {
             _collection = new ObservableCollection<HierarchyLine>();
 
+            if (item == null)
+                return _collection;
+
             CalculateParentLines(item);
             CalculateChildLines(item);
 

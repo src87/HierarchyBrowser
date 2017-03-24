@@ -54,6 +54,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\IndentLevelToMarginConverter.cs" />
     <Compile Include="Converters\IntToVerticalMarginConverter.cs" />
+    <Compile Include="Converters\NullToCollapsedVisibilityConverter.cs" />
     <Compile Include="Converters\StringEmptyToVisibilityConverter.cs" />
     <Compile Include="Data\FakeDataProvider.cs" />
     <Compile Include="Framework\ApplicationContext.cs" />
