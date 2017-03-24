@@ -20,7 +20,7 @@
     <Style TargetType="DockPanel">
         <Setter Property="LastChildFill" Value="False" />
     </Style>
-    
+
     <Style x:Key="SelectedItemBorder" TargetType="Border">
         <!--<Style.Triggers>
             <Trigger Property="IsFocused" Value="False">
@@ -58,8 +58,8 @@
             </Trigger>
         </Style.Triggers>-->
     </Style>
-    
-    <Style x:Key="HeaderBorder" TargetType="Border">
+
+    <Style x:Key="HeaderBorder" TargetType="Border"> <!--BasedOn="{StaticResource {x:Type Border}}">-->
         <Setter Property="BorderBrush" Value="{StaticResource HeaderDarkColour}" />
         <Setter Property="Background" Value="{StaticResource HeaderLightColour}" />
         <Setter Property="BorderThickness" Value="0,1,0,0"/>

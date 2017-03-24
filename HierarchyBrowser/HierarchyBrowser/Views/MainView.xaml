@@ -6,33 +6,54 @@
              xmlns:local="clr-namespace:HierarchyBrowser"
              xmlns:viewModels="clr-namespace:HierarchyBrowser.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             d:DesignHeight="500" d:DesignWidth="600">
     <UserControl.DataContext>
         <viewModels:MainViewModel/>
     </UserControl.DataContext>
-    <Grid>
+    <Grid Background="{StaticResource FormBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="450"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
-            <TextBox Name="SearchTextBox"  Width="150" Height="20" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Width="40" Height="20" Command="{Binding SearchCommand}"/>
+        <Border Grid.ColumnSpan="2" BorderBrush="DarkGray" BorderThickness="1" Margin="10,10,10,10" VerticalAlignment="Center" Background="White" Width="890" HorizontalAlignment="Left">
+            <StackPanel Margin="0,10,0,10" FocusManager.FocusedElement="{Binding ElementName=SearchTextBox}">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <Label Content="Search" Width="75" HorizontalContentAlignment="Right"/>
+                    <TextBox Name="SearchTextBox" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Width="250" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Filter" Width="75" HorizontalContentAlignment="Right"/>
+                    <Button Content="All codes" Height="25" Width="110"/>
+                    <Button Content="Clinical findings" Height="25" Width="110"/>
+                    <Button Content="Disorders" Height="25" Width="110"/>
+                    <Button Content="Procedures" Height="25" Width="110"/>
+                    <Button Content="Family history" Height="25" Width="110"/>
+                    <Button Content="Admin" Height="25" Width="110"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10,0,10,0">
+            <Border Style="{StaticResource HeaderBorder}">
+                <TextBlock Text="Search results" 
+                           Style="{StaticResource HeaderTextBlock}"/>
+            </Border>
+            <ListView Height="500" SelectionMode="Single" ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Width="265">
+                            <TextBlock Text="{Binding DisplayText}" DockPanel.Dock="Left"/>
+                            <TextBlock Text="(lol)" FontStyle="Italic" Foreground="Blue" DockPanel.Dock="Right"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackPanel>
-        <ListView Grid.Row="1" Grid.Column="0" SelectionMode="Single" ItemsSource="{Binding Results}" SelectedItem="{Binding SelectedItem}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel Width="265">
-                        <TextBlock Text="{Binding DisplayText}" DockPanel.Dock="Left"/>
-                        <TextBlock Text="(lol)" FontStyle="Italic" Foreground="Blue" DockPanel.Dock="Right"/>
-                    </DockPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding HierarchyViewModel}"/>
+        <ContentControl Grid.Row="1" Grid.Column="1" Height="500" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Content="{Binding HierarchyViewModel}"/>
     </Grid>
 </UserControl>

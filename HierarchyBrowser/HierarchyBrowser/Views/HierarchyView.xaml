@@ -4,9 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
-             mc:Ignorable="d" 
-             SnapsToDevicePixels="True">
-    <StackPanel>
+             mc:Ignorable="d" >
+    <StackPanel Background="White">
         <Border Style="{StaticResource HeaderBorder}">
             <TextBlock Text="Code hierarchy" 
                        Style="{StaticResource HeaderTextBlock}"/>
@@ -25,7 +24,7 @@
                               X2="{Binding X2}" 
                               Y2="{Binding Y2}" 
                               Stroke="Black" 
-                              StrokeThickness=".5" />
+                              StrokeThickness="0.5" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helpers="clr-namespace:HierarchyBrowser.Helpers"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
              mc:Ignorable="d">
     <Border Style="{StaticResource SelectedItemBorder}">
         <DockPanel Style="{StaticResource SelectedItemDockPanel}">

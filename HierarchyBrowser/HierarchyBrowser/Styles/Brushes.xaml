@@ -3,4 +3,5 @@
     <SolidColorBrush Color="#E5ECF9" x:Key="HeaderLightColour" />
     <SolidColorBrush Color="#376BCF" x:Key="HeaderMediumColour" />
     <SolidColorBrush Color="#2C5DD3" x:Key="HeaderDarkColour" />
+    <SolidColorBrush Color="#F0F0F0" x:Key="FormBackground" />
 </ResourceDictionary>

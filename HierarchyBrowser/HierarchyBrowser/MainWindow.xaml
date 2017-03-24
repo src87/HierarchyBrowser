@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:HierarchyBrowser"
         xmlns:views="clr-namespace:HierarchyBrowser.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        SnapsToDevicePixels="True"
+        Title="MainWindow" Height="700" Width="950">
     <Grid>
         <views:MainView/>
     </Grid>
