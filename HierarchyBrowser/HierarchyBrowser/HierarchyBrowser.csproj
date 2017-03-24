@@ -78,6 +78,10 @@
     <Compile Include="Views\SelectedItemView.xaml.cs">
       <DependentUpon>SelectedItemView.xaml</DependentUpon>
     </Compile>
+    <Page Include="default.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ResourceDictionaries\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
